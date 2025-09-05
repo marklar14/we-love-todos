@@ -1,0 +1,38 @@
+<app-todo-filter></app-todo-filter>
+<section class="mt-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4">
+    @if (stats().total === 0) {
+      <p class="text-zinc-400">No tasks yet</p>
+    } @else {
+    <!-- Stats -->
+    <app-todo-stats></app-todo-stats>
+  
+    <!-- List -->
+    <ul role="list" class="space-y-2 max-h-80 overflow-auto pr-1">
+      @for (t of list(); track t.id) {
+        <li
+         class="group flex items-center justify-between gap-3 rounded-xl border border-zinc-800 bg-zinc-900/80 p-3 hover:border-zinc-700 hover:bg-zinc-900"
+         [class.bg-zinc-900/80]="!t.completed"
+         [class.bg-zinc-900/40]="t.completed"
+         [class.opacity-70]="t.completed"
+         [class.hover\:opacity-100]="t.completed"
+         [class.hover\:bg-zinc-900/60]="t.completed"
+        >
+          <label class="flex flex-1 items-center gap-3">
+            <input type="checkbox" class="size-4 accent-indigo-500" [checked]="t.completed" (change)="toggle(t.id)" />
+            <input
+            class="flex-1 rounded-md bg-transparent px-2 py-1 ring-1 ring-transparent focus:outline-none focus:ring-zinc-700"
+            [class.line-through]="t.completed"
+            [class.text-zinc-400]="t.completed"
+            [value]="t.title"
+            [readOnly]="t.completed"
+            (change)="rename(t.id, $event.target.value)"
+            [title]="t.title" />
+          </label>
+          <button
+          class="rounded-md border border-zinc-700 px-2 py-1 text-zinc-300 transition hover:border-zinc-500 hover:text-white"
+          (click)="remove(t.id)">✕</button>
+        </li>
+      }
+    </ul>
+    }
+  </section>

@@ -1,0 +1,25 @@
+<section
+  class="flex gap-2 mt-3 mb-3 rounded-xl border border-zinc-800 bg-gray-900/60 p-3"
+>
+  <button
+    class="text-zinc-400 btn"
+    [class.btn-primary]="filter() === 'all'"
+    (click)="filter.set('all')"
+  >
+    All
+  </button>
+  <button
+    class="text-zinc-400 btn"
+    [class.btn-primary]="filter() === 'active'"
+    (click)="filter.set('active')"
+  >
+    Active
+  </button>
+  <button
+    class="text-zinc-400 btn"
+    [class.btn-primary]="filter() === 'completed'"
+    (click)="filter.set('completed')"
+  >
+    Completed
+  </button>
+</section>

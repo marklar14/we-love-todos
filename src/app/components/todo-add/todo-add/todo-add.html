@@ -1,0 +1,16 @@
+<section class="mt-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4">
+    <div class="flex gap-2">
+      <input
+        class="flex-1 rounded-lg bg-zinc-900 px-3 py-2 ring-1 ring-zinc-800 focus:outline-none focus:ring-indigo-500"
+        placeholder="What needs to be done?"
+        [ngModel]="newTitle()"
+        (ngModelChange)="newTitle.set($event)"
+        (keyup.enter)="onEnter()"
+        aria-label="New todo" />
+      <button
+        class="rounded-lg bg-indigo-600 px-4 py-2 font-medium hover:bg-indigo-500 disabled:opacity-50"
+        (click)="add()">
+        Add
+      </button>
+    </div>
+  </section>

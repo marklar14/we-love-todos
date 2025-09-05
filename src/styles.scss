@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+@layer base {
+    :root {
+      --bg: #0b0f1a;
+      --panel: #121828;
+      --text: #e7eaf0;
+      --muted: #9aa4b2;
+      --brand: #4f8cff;
+      --brand-2: #a78bfa;
+      --danger: #ff5c5c;
+      --ok: #48d597;
+      --radius: 0.8rem;
+    }
+  
+    :root { color-scheme: dark; }
+    html, body { height: 100%; }
+    body {
+      @apply bg-zinc-950 text-zinc-100 antialiased;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+  
+    ::selection { background: color-mix(in oklab, var(--brand) 50%, black); color: white; }
+    a { @apply text-indigo-400 hover:text-indigo-300 underline-offset-2 hover:underline; }
+    code, pre { @apply font-mono text-sm; }
+  }
+  
+  /* --- Components layer: sdílené utility třídy --- */
+  @layer components {
+    .container-page { @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8; }
+  
+    .card {
+      background: var(--panel);
+      border-radius: calc(var(--radius) + 0.2rem);
+      @apply border border-zinc-800 shadow;
+    }
+    .card-body { @apply p-4 md:p-6; }
+    .card-title { @apply text-lg font-semibold mb-2; }
+    .card-subtle { @apply text-zinc-400 text-sm; }
+  
+    .btn {
+      @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition
+             disabled:opacity-50 disabled:pointer-events-none;
+    }
+    .btn-primary { @apply bg-indigo-600 hover:bg-indigo-500 text-white; }
+    .btn-ghost   { @apply bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700; }
+    .btn-danger  { @apply bg-rose-600 hover:bg-rose-500 text-white; }
+  
+    .input {
+      @apply rounded-lg bg-zinc-900 px-3 py-2 ring-1 ring-zinc-800
+             focus:outline-none focus:ring-2 focus:ring-indigo-500;
+    }
+  
+    .chip { @apply inline-flex items-center gap-1 rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300; }
+  }
