@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
-import { TodoService } from '../../../services/todo';
 import { FormsModule } from '@angular/forms';
+import { TodoStore } from '../../../store/todo.store';
 
 @Component({
   selector: 'app-todo-add',
@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './todo-add.scss',
 })
 export class TodoAdd {
-  private readonly todos = inject(TodoService);
+  private readonly todos = inject(TodoStore);
   newTitle = signal('');
 
   onEnter() {
     this.add();
   }
   add() {
-    this.todos.add(this.newTitle());
+    this.todos.addTodo(this.newTitle());
   }
 }

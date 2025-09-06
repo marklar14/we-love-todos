@@ -4,21 +4,21 @@
   <button
     class="text-zinc-400 btn"
     [class.btn-primary]="filter() === 'all'"
-    (click)="filter.set('all')"
+    (click)="setFilter('all')"
   >
     All
   </button>
   <button
     class="text-zinc-400 btn"
     [class.btn-primary]="filter() === 'active'"
-    (click)="filter.set('active')"
+    (click)="setFilter('active')"
   >
     Active
   </button>
   <button
     class="text-zinc-400 btn"
     [class.btn-primary]="filter() === 'completed'"
-    (click)="filter.set('completed')"
+    (click)="setFilter('completed')"
   >
     Completed
   </button>

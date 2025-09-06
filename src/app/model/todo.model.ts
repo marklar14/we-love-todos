@@ -4,3 +4,11 @@ export interface Todo {
   completed: boolean;
   createdAt: Date;
 }
+
+export type Filters = 'all' | 'active' | 'completed';
+
+export interface Stats {
+  total: number;
+  active: number;
+  completed: number;
+}

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { TodoService } from '../../../services/todo';
-import { TodoStats } from '../../todo-stats/todo-stats/todo-stats';
+import { TodoStore } from '../../../store/todo.store';
 import { TodoFilter } from '../../todo-filter/todo-filter/todo-filter';
+import { TodoStats } from '../../todo-stats/todo-stats/todo-stats';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,19 +10,19 @@ import { TodoFilter } from '../../todo-filter/todo-filter/todo-filter';
   styleUrl: './todo-list.scss',
 })
 export class TodoList {
-  private readonly todos = inject(TodoService);
+  private readonly todos = inject(TodoStore);
   readonly list = this.todos.filteredTodos;
   readonly stats = this.todos.stats;
 
   toggle(id: string) {
-    this.todos.toggle(id);
+    this.todos.toggleTodo(id);
   }
 
   rename(id: string, title: string) {
-    this.todos.rename(id, title);
+    this.todos.renameTodo(id, title);
   }
 
   remove(id: string) {
-    this.todos.remove(id);
+    this.todos.removeTodo(id);
   }
 }
