@@ -7,7 +7,7 @@ import {
   withMethods,
   withState,
 } from '@ngrx/signals';
-import { Filters, Stats, Todo } from '../model/todo.model';
+import { Filters, Todo } from '../model/todo.model';
 
 const STORAGE_KEY = 'todos_v1';
 
